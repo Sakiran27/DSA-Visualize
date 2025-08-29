@@ -105,15 +105,7 @@ const BST = () => {
   const [nodePositions, setNodePositions] = useState(new Map());
   const treeRef = useRef(null);
 
-  // Traversal Logic
-  const generateTraversalPath = (node, path, type) => {
-    if (!node) return;
-    if (type === 'preOrder') path.push(node.value);
-    generateTraversalPath(node.left, path, type);
-    if (type === 'inOrder') path.push(node.value);
-    generateTraversalPath(node.right, path, type);
-    if (type === 'postOrder') path.push(node.value);
-  };
+
   
   const generateInOrderAnimation = (node, path, linePath) => {
     if (!node) { linePath.push(2); linePath.push(3); return; }
@@ -158,14 +150,13 @@ const BST = () => {
     setTraversalState({ opPath: [], currentStep: 0, isActive: false, currentCode: IN_ORDER_PSEUDO_CODE });
   };
 
-  // --- CRITICAL FIX: Use useCallback to stabilize nextStep ---
   const nextStep = useCallback(() => {
     if (traversalState.currentStep < traversalState.opPath.length) {
       setTraversalState(prev => ({ ...prev, currentStep: prev.currentStep + 1 }));
     } else {
       setTraversalState(prev => ({ ...prev, isActive: false }));
     }
-  }, [traversalState]); // nextStep depends on traversalState
+  }, [traversalState]);
 
   // Automated step progression for animation
   useEffect(() => {
@@ -194,24 +185,7 @@ const BST = () => {
     }
   }, [root, treeRef.current?.offsetWidth]);
 
-  // Game Mode Logic (same as before)
-  const startGame = (type) => {
-    const values = [50, 40, 70, 30, 45, 60, 80];
-    let newRoot = null;
-    values.forEach(val => {
-      newRoot = insertNode(newRoot, val);
-    });
-    setRoot(newRoot);
-    const correctPath = [];
-    generateTraversalPath(newRoot, correctPath, type);
-    setGameState({ 
-      isGameMode: true, 
-      correctPath, 
-      userPath: [], 
-      message: `Click the nodes in ${type} order.`,
-      traversalType: type,
-    });
-  };
+
 
   const handleUserClick = (value) => {
     if (!gameState.isGameMode) return;
@@ -230,7 +204,7 @@ const BST = () => {
     }
   };
 
-  // Node and layout logic (same as before)
+  // Node and layout logic
   const insertNode = (currentNode, value) => {
     if (currentNode === null) return { value: value, left: null, right: null };
     const newNode = { ...currentNode };
