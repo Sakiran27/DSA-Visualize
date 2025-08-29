@@ -1,0 +1,193 @@
+/* src/LinkedList.css */
+
+.linked-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px auto;
+  font-family: 'Poppins', sans-serif;
+  color: #2c3e50;
+  width: 95%;
+  max-width: 1400px; /* Increased max-width for more space */
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+h2 {
+  font-size: 3em;
+  color: #34495e;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.visualizer-and-code-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* More space between visualizer and code */
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .visualizer-and-code-container {
+    flex-direction: row;
+  }
+}
+
+.list-visualizer {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  padding: 50px 30px; /* Increased padding inside the visualizer area */
+  min-height: 180px; /* Increased min-height for more vertical space */
+  border: 2px dashed #bdc3c7;
+  border-radius: 12px;
+  width: 100%;
+  overflow-x: auto;
+  justify-content: center;
+}
+
+.empty-list-message {
+  color: #7f8c8d;
+  font-style: italic;
+  font-size: 1.2em;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  margin-right: 70px; /* Significantly increased margin */
+  position: relative;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  animation: nodeFadeIn 0.5s forwards;
+  will-change: transform, opacity;
+}
+
+.node:hover {
+  transform: translateY(-10px) scale(1.08);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.node-value {
+  width: 70px; /* Increased node size */
+  height: 70px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 1.6em; /* Increased font size */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  border: 4px solid #f8f9fa; /* Increased border size */
+}
+
+.head-label {
+  position: absolute;
+  top: -30px; /* Adjusted position */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1em;
+  font-weight: bold;
+  color: #e67e22;
+  background-color: #f9f9f9;
+  padding: 4px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+  font-size: 3em; /* Increased arrow size */
+  color: #7f8c8d;
+  margin-left: 20px; /* Increased margin */
+  position: relative;
+  animation: pulse 1.5s infinite;
+  pointer-events: none;
+}
+
+.node:last-child .arrow {
+  visibility: hidden;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Increased gap */
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.controls input {
+  padding: 15px; /* Increased padding */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  min-width: 280px;
+}
+
+.controls input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.3);
+}
+
+button {
+  padding: 15px 30px; /* Increased padding */
+  font-size: 1.2em;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  will-change: transform, box-shadow;
+}
+
+button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.add-btn {
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  color: white;
+}
+
+.delete-btn {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  color: white;
+}
+
+.search-btn {
+  background: linear-gradient(45deg, #f1c40f, #e67e22);
+  color: white;
+}
+
+.code-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.node.highlighted {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px 10px #f1c40f; /* Stronger glow */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Keyframes for animations */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes nodeFadeIn {
+  from { opacity: 0;}
+}

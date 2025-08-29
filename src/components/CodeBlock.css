@@ -1,0 +1,37 @@
+/* src/components/CodeBlock.css */
+
+.code-block {
+  background-color: #2d2d2d; /* Dark background for code */
+  color: #f8f8f2; /* Light text for code */
+  font-family: 'Fira Code', 'Courier New', monospace; /* Monospaced font */
+  font-size: 1em;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  text-align: left;
+  line-height: 1.5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 100%; /* Take full height of parent */
+  display: flex; /* For line numbering */
+  flex-direction: column;
+}
+
+.code-line {
+  transition: background-color 0.3s ease;
+  padding-left: 5px;
+  margin-left: -5px; /* Adjust for line number spacing */
+  border-left: 3px solid transparent;
+  white-space: pre; /* Preserve whitespace for indentation */
+}
+
+.code-line.highlighted-line {
+  background-color: #4a4a4a; /* Slightly lighter background for highlight */
+  border-left-color: #61dafb; /* React blue for border */
+}
+
+.line-number {
+  color: #777; /* Grey line numbers */
+  margin-right: 15px;
+  user-select: none;
+  flex-shrink: 0; /* Prevent line numbers from shrinking */
+}
